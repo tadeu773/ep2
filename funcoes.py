@@ -20,3 +20,17 @@ def faz_jogada(tabuleiro, linha, coluna):
     else:
         tabuleiro[linha][coluna] = '-'
     return tabuleiro
+
+def afundados(frota, tabuleiro):
+    afundados_count = 0
+    for nome_navio in frota:
+        for navio in frota[nome_navio]:
+            afundado = True
+            for posicao in navio:
+                linha, coluna = posicao
+                if tabuleiro[linha][coluna] != 'X':
+                    afundado = False
+                    break
+            if afundado:
+                afundados_count += 1
+    return afundados_count
